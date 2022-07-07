@@ -1,0 +1,422 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+
+    --hue: 48;
+    --background-color: hsl(var(--hue), 100%, 93%);
+    --header-color: hsla(var(--hue), 100%, 93%, 70%);
+    --border-color: hsl(var(--hue), 10%, 80%);
+
+    --table-header-color: hsl(var(--hue), 80%, 70%);
+    --table-row-odd-color: hsl(var(--hue), 10%, 90%);
+    --table-row-even-color: hsl(var(--hue), 10%, 95%);
+
+    --input-color: var(--table-header-color);
+    --input-color-hover: var(--table-row-even-color);
+    --output-color: hsl(var(--hue), 80%, 70%);
+
+    --disabled-color: hsla(var(--hue), 100%, 100%, 0%);
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Roboto-Mono', sans-serif;
+    background-image: url(images/background.png);
+}
+
+body header {
+    background-color: var(--header-color);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "title image" "desc desc";
+    align-items: center;
+    justify-content: center;
+    gap: 2.0rem;
+    padding: 1.0rem 2.0rem;
+
+    width: 100vw;
+}
+
+header h1 {
+    grid-area: title;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: 3px;
+
+    text-align: end;
+    text-transform: uppercase;
+}
+
+header img {
+    grid-area: image;
+    width: 100px;
+    margin: 0 auto;
+}
+
+header h2 {
+    grid-area: desc;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: 3px;
+
+    text-align: center;
+}
+
+body main {
+    background-color: var(--background-color);
+    border-radius: 2.0rem;
+
+    width: 80vw;
+    min-width: 256px;
+    margin: 2.0rem auto;
+
+    box-shadow: 0 0 2.0rem -1.0rem rgba(0, 0, 0, 1);
+}
+
+main .comments {
+    display: flex;
+    flex-direction: column;
+    gap: 1.0rem;
+}
+
+main .comments table {
+    width: 100%;
+    border-radius: 1.0rem 1.0rem 0 0;
+
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 400;
+
+    border-collapse: collapse;
+}
+
+table thead th {
+    background-color: var(--table-header-color);
+    border-radius: 1.0rem 1.0rem 0 0;
+    padding: 1.0rem;
+}
+
+thead tr {
+    font-size: 2.0rem;
+    line-height: 3.0rem;
+
+    transition: all 400ms;
+}
+
+thead tr:hover {
+    filter:brightness(1.1);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--table-row-odd-color);
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--table-row-even-color);
+}
+
+tbody tr td:first-child {
+    width: 50%;
+    text-align: end;
+    padding-right: 1.0rem;
+}
+
+tbody tr td:last-child {
+    text-align: start;
+    padding-left: 1.0rem;
+    font-weight: 600;
+}
+
+tbody tr td {
+    padding: .6rem;
+}
+
+tbody td input {
+    width: 5.0rem;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 600;
+
+    text-align: center;
+
+    border: var(--border-color);
+    border-radius: 2px;
+    box-shadow: 0rem 0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.3) inset
+}
+
+main .inputs {
+    margin: 0 auto;
+    padding: 1.0rem;
+}
+
+h2 {
+    text-align: center;
+    padding-bottom: 1.0rem;
+}
+
+.inputs {
+    display: grid;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputs .input-wrapper {
+    padding: 0.5rem;
+    
+    background: var(--input-color);
+
+    width: 100%;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 2fr auto 1fr;
+    grid-template-areas: "left-label input right-label";
+
+    transition: all 400ms;
+}
+
+.inputs .input-wrapper:hover,
+.inputs .input-wrapper-unique:hover {
+    box-shadow: 0 0 2.0rem -1.0rem rgba(0, 0, 0, 1);
+}
+
+.inputs .input-wrapper-unique {
+    padding: 0.5rem;
+    
+    background: var(--input-color);
+
+    width: 100%;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 2fr auto auto 1fr;
+    grid-template-areas: "left-label input1 input2 right-label";
+    transition: all 400ms;
+}
+
+.input-wrapper #left,
+.input-wrapper-unique #left {
+    grid-area: left-label;
+    text-align: end;
+    margin-right: 1.0rem;
+
+    align-self: center;
+}
+
+.input-wrapper input {
+    grid-area: input;
+    width: 6.5rem;
+
+    font-size: 2.0rem;
+    line-height: 3.0rem;
+    text-align: center;
+
+    padding-left: 0.1rem;
+
+    border: var(--border-color);
+    border-radius: 3px;
+}
+
+.input-wrapper .enabled {
+    box-shadow: 0rem 0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.3) inset;
+}
+
+.input-wrapper input:focus {
+    outline: 2px solid black;
+    border-radius: 2px;
+}
+
+.input-wrapper #right {
+    grid-area: right-label;
+    text-align: start;
+    margin-left: 1.0rem;
+
+    align-self: center;
+}
+
+.input-wrapper-unique #right {
+    grid-area: right-label;
+    text-align: start;
+    margin-left: 1.0rem;
+
+    align-self: center;
+    justify-self: flex-start;
+}
+
+
+.input-wrapper-unique input[type=range] {
+    grid-area: input1;
+    width: 6.5rem;
+
+    font-size: 2.0rem;
+    line-height: 3.0rem;
+    text-align: center;
+
+    padding-left: 0.1rem;
+}
+
+.input-wrapper-unique input[type=number] {
+    grid-area: input2;
+    width: 6.0rem;
+    font-size: 2.0rem;
+    line-height: 3.0rem;
+    text-align: center;
+
+    padding-left: 1.1rem;
+
+    background: none;
+    border: none;
+
+    transition: all 400ms;
+}
+
+.input-wrapper-unique .enabled:hover,
+.input-wrapper-unique input[type=number]:focus {
+    border: var(--border-color);
+    border-radius: 2px;
+    box-shadow: 0rem 0rem 0.2rem 0.1rem rgba(0, 0, 0, 0.3) inset;
+    background-color: white;
+}
+
+input[type=range] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+}
+  
+input[type=range]::-webkit-slider-thumb {
+-webkit-appearance: none;
+}
+
+input[type=range]:focus {
+outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+width: 100%;
+cursor: pointer;
+
+/* Hides the slider so custom styles can be added */
+background: transparent; 
+border-color: transparent;
+color: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border: 1px solid black;
+    border-radius: 999px;
+    background: var(--background-color);
+    cursor: pointer;
+    margin-top: -6px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  }
+
+input[type=range]::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border: 1px solid black;
+    border-radius: 999px;
+    background: var(--background-color);
+    cursor: pointer;
+}
+
+input[type=range]::-ms-thumb {
+    height: 16px;
+    width: 16px;
+    border: 1px solid black;
+    border-radius: 999px;
+    background: var(--background-color);
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: var(--background-color);
+    border: 1px solid var(--background-color);
+    border-radius: 5px;
+  }
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: var(--background-color);
+    border: 1px solid var(--background-color);
+    border-radius: 5px;  
+} 
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: var(--background-color);
+    border: 1px solid var(--background-color);
+    border-radius: 5px;  
+} 
+
+p {
+    text-align: center;
+}
+
+.output {
+    background-color: var(--output-color);
+    border-radius: 0 0 2.0rem 2.0rem;
+
+    padding: 1.0rem;
+
+    transition: all 400ms;
+}
+
+.output:hover {
+    filter: brightness(1.1);
+}
+
+.output p {
+
+    font-size: 1.8rem;
+    line-height: 3.0rem;
+}
+
+.disabled {
+    color: black;
+    background-color: var(--disabled-color);
+    border: var(--disabled-color);
+    box-shadow: 0rem 0rem 0.2rem 0.1rem var(--disabled-color) inset;
+}
+
+@media (min-width: 321px) {
+
+    .inputs {
+        gap: 1.0rem;
+    }
+
+    .input-wrapper,
+    .input-wrapper-unique {
+        border-radius: 2.0rem;
+    }
+}
+
+@media (min-width: 600px) {
+
+    .inputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 1.0rem;
+    }
+
+    .input-wrapper {
+        height: 100%;
+    }
+   
+}
