@@ -7,9 +7,9 @@
 :root {
     font-size: 62.5%;
 
-    --hue: 48;
+    --hue: 200;
     --background-color: hsl(var(--hue), 100%, 93%);
-    --header-color: hsla(var(--hue), 100%, 93%, 70%);
+    --header-color: hsla(var(--hue), 100%, 43%, 60%);
     --border-color: hsl(var(--hue), 10%, 80%);
 
     --table-header-color: hsl(var(--hue), 80%, 70%);
@@ -26,17 +26,18 @@
 body {
     font-size: 1.6rem;
     font-family: 'Roboto-Mono', sans-serif;
-    background-image: url(images/background.png);
+    background-image: url(images/daniel-sinoca-AANCLsb0sU0-unsplash.jpg);
+    background-size: cover;
 }
 
 body header {
-    background-color: var(--header-color);
+    /* background-color: var(--header-color); */
+    background: linear-gradient(180deg, var(--header-color) 50%,white);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "title image" "desc desc";
+    grid-template-areas: "logo-gov logo-pad" "title title" "desc desc";
     align-items: center;
     justify-content: center;
-    gap: 2.0rem;
     padding: 1.0rem 2.0rem;
 
     width: 100vw;
@@ -44,17 +45,25 @@ body header {
 
 header h1 {
     grid-area: title;
-    font-size: 1.6rem;
+    font-size: 2.6rem;
     line-height: 2.4rem;
     letter-spacing: 3px;
 
-    text-align: end;
+    text-align: center;
     text-transform: uppercase;
+
+    margin-top: 1.0rem;
 }
 
-header img {
-    grid-area: image;
+header .logo-pad {
+    grid-area: logo-pad;
     width: 100px;
+    margin: 0 auto;
+}
+
+header .logo-gov {
+    grid-area: logo-gov;
+    width: 130px;
     margin: 0 auto;
 }
 
