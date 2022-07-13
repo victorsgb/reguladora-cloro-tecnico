@@ -37,6 +37,8 @@ body {
 
 body header {
     background: linear-gradient(180deg, var(--header-color) 50%,white);
+
+    padding-top: 1.0rem;
 }
 
 body header .header-content {
@@ -47,9 +49,9 @@ body header .header-content {
     padding: 1.0rem 2.0rem;
 
     width: 100vw;
-    max-width: 450px;
+    max-width: 850px;
 
-    margin: 0 auto;
+    margin: auto;
 }
 
 header h1 {
