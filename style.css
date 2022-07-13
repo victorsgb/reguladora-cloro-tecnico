@@ -28,10 +28,10 @@ body {
     font-family: 'Roboto-Mono', sans-serif;
     background-image: url(images/daniel-sinoca-AANCLsb0sU0-unsplash.jpg);
     background-size: cover;
+    height: 100vh;
 }
 
 body header {
-    /* background-color: var(--header-color); */
     background: linear-gradient(180deg, var(--header-color) 50%,white);
     display: grid;
     grid-template-columns: 1fr 1fr;
